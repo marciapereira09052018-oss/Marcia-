@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meu App de Filmes</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: white;
+}
+
+header {
+    background: #e50914;
+    padding: 15px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.container {
+    padding: 20px;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.movie-card {
+    background: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.movie-info {
+    padding: 10px;
+}
+
+button {
+    background: #e50914;
+    border: none;
+    padding: 8px;
+    color: white;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ff1f2a;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+🎬 Meu App de Filmes & Séries
+</header>
+
+<div class="container">
+    <div class="movie-grid" id="movieGrid"></div>
+</div>
+
+<script>
+const movies = [
+    {
+        title: "Filme Exemplo 1",
+        image: "https://via.placeholder.com/300x450",
+        description: "Descrição do filme exemplo 1"
+    },
+    {
+        title: "Série Exemplo 2",
+        image: "https://via.placeholder.com/300x450",
+        description: "Descrição da série exemplo 2"
+    },
+    {
+        title: "Filme Exemplo 3",
+        image: "https://via.placeholder.com/300x450",
+        description: "Descrição do filme exemplo 3"
+    }
+];
+
+const movieGrid = document.getElementById("movieGrid");
+
+movies.forEach(movie => {
+    const card = document.createElement("div");
+    card.classList.add("movie-card");
+
+    card.innerHTML = `
+        <img src="${movie.image}" alt="${movie.title}">
+        <div class="movie-info">
+            <h3>${movie.title}</h3>
+            <button onclick="showDetails('${movie.description}')">Assistir</button>
+        </div>
+    `;
+
+    movieGrid.appendChild(card);
+});
+
+function showDetails(description) {
+    alert(description);
+}
+</script>
+
+</body>
+</html>
